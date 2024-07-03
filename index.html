@@ -1,72 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Create Tailwind</title>
-    <link rel="stylesheet" href="/style.css" />
-  </head>
-<!--aaa-->
-  <body
-    class="h-screen bg-gradient-to-b from-gray-900 to-slate-800 flex flex-col text-white"
-  >
-    <header class="py-16">
-      <h1 class="text-4xl font-bold text-center mb-6">Create Tailwind</h1>
-      <div class="flex flex-row justify-center items-center gap-4">
-        <a
-          class="github-button"
-          href="https://github.com/andrejjurkin/create-tw"
-          data-color-scheme="no-preference: dark; light: dark; dark: dark;"
-          data-icon="octicon-star"
-          data-size="large"
-          data-show-count="true"
-          aria-label="Star andrejjurkin/create-tw on GitHub"
-          >Star</a
-        >
-        <a
-          class="github-button"
-          href="https://github.com/andrejjurkin/create-tw/discussions"
-          data-color-scheme="no-preference: dark; light: dark; dark: dark;"
-          data-icon="octicon-comment-discussion"
-          data-size="large"
-          aria-label="Discuss andrejjurkin/create-tw on GitHub"
-          >Discuss</a
-        >
-      </div>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crypto Market Analysis Tool</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-gray-100">
+    <header class="bg-blue-500 text-white p-4">
+        <h1 class="text-3xl font-bold">Crypto Market Analysis Tool</h1>
+        <nav>
+            <ul class="flex space-x-4">
+                <li><a href="#" id="home-link" class="hover:underline">Home</a></li>
+                <li><a href="#" id="trends-link" class="hover:underline">Trends Analysis</a></li>
+                <li><a href="#" id="sentiment-link" class="hover:underline">Market Sentiment</a></li>
+                <li><a href="#" id="alerts-link" class="hover:underline">Custom Alerts</a></li>
+                <li><a href="#" id="profile-link" class="hover:underline">Profile</a></li>
+            </ul>
+        </nav>
     </header>
-
-    <main class="flex-1">
-      <section class="text-center">
-        <div class="w-full grid place-items-center p-12">
-          <a href="https://vitejs.dev/">
-            <img src="/vite.svg" alt="Vite" class="h-24" />
-          </a>
-        </div>
-        <h2 class="text-3xl font-bold text-center">Created With Vite</h2>
-        <p class="mb-6">The Next Generation Frontend Tooling</p>
-        <ul
-          class="flex flex-row items-center w-full gap-8 justify-center text-blue-300 font-medium"
-        >
-          <li>
-            <a href="https://vitejs.dev/">Learn More</a>
-          </li>
-          <li>
-            <a href="https://vitejs.dev/guide/why.html">Why Vite?</a>
-          </li>
-        </ul>
-      </section>
+    <main class="p-4">
+        <section id="home" class="content-section">
+            <h2 class="text-2xl font-bold mb-2">Market Summary</h2>
+            <div id="market-summary" class="grid grid-cols-3 gap-4"></div>
+        </section>
+        <section id="trends" class="content-section hidden">
+            <h2 class="text-2xl font-bold mb-2">Trends Analysis</h2>
+            <div id="trends-analysis" class="grid grid-cols-3 gap-4"></div>
+        </section>
+        <section id="sentiment" class="content-section hidden">
+            <h2 class="text-2xl font-bold mb-2">Market Sentiment</h2>
+            <div id="market-sentiment" class="grid grid-cols-3 gap-4"></div>
+        </section>
+        <section id="alerts" class="content-section hidden">
+            <h2 class="text-2xl font-bold mb-2">Custom Alerts</h2>
+            <div id="custom-alerts" class="grid grid-cols-3 gap-4"></div>
+        </section>
+        <section id="profile" class="content-section hidden">
+            <h2 class="text-2xl font-bold mb-2">User Profile</h2>
+            <div id="user-profile" class="bg-white p-4 rounded shadow"></div>
+        </section>
     </main>
-
-    <footer class="px-8 py-12 border-t border-gray-800">
-      <div class="px-8 font-medium text-center">
-        <a href="https://github.com/andrejjurkin/create-tw">
-          Create Tailwind
-        </a>
-      </div>
+    <footer class="bg-gray-800 text-white p-4 text-center">
+        <p>&copy; 2024 Crypto Market Analysis Tool. All rights reserved.</p>
     </footer>
-    <script type="module" src="/main.js"></script>
-    <!-- Place this tag in your head or just before your close body tag. -->
-    <script async defer src="https://buttons.github.io/buttons.js"></script>
-  </body>
+    <script src="main.js"></script>
+</body>
 </html>
