@@ -1,4 +1,3 @@
-
 const marketData = [
     { name: 'Bitcoin (BTC)', price: '$30,000', change: '+2%', trend: [29000, 29500, 30000, 31000, 30500] },
     { name: 'Ethereum (ETH)', price: '$2,000', change: '+5%', trend: [1900, 1950, 2000, 2100, 2050] },
@@ -8,6 +7,11 @@ const marketData = [
     { name: 'Polkadot (DOT)', price: '$25', change: '+4%', trend: [23, 24, 25, 26, 25] },
 ];
 
+const walletData = [
+    { name: 'Bitcoin (BTC)', price: '$30,000' },
+    { name: 'Ethereum (ETH)', price: '$2,000' },
+    { name: 'Ripple (XRP)', price: '$0.60' },
+];
 
 const trendsData = [
     { name: 'Bitcoin (BTC)', trend: 'Bullish' },
@@ -57,7 +61,6 @@ const profileData = {
     }
 };
 
-
 function renderMarketSummary() {
     const marketSummaryElement = document.getElementById('market-summary');
     marketSummaryElement.innerHTML = marketData.map(coin => `
@@ -69,7 +72,6 @@ function renderMarketSummary() {
         </div>
     `).join('');
 
-   
     marketData.forEach(coin => {
         const ctx = document.getElementById(`${coin.name.replace(/\s+/g, '')}-chart`).getContext('2d');
         new Chart(ctx, {
@@ -96,6 +98,59 @@ function renderMarketSummary() {
     });
 }
 
+function renderWallet() {
+    const walletElement = document.getElementById('wallet-section');
+    walletElement.innerHTML = walletData.map(coin => `
+        <div class="bg-white p-4 rounded shadow">
+            <h3 class="text-xl font-bold">${coin.name}</h3>
+            <p>Price: ${coin.price}</p>
+            <button class="bg-green-500 text-white p-2 rounded mt-2" onclick="buyCoin('${coin.name}')">Buy</button>
+            <button class="bg-red-500 text-white p-2 rounded mt-2" onclick="sellCoin('${coin.name}')">Sell</button>
+        </div>
+    `).join('');
+}
+
+function buyCoin(coinName) {
+    const buyOptions = [
+        { price: '$30,000', amount: '0.01 BTC' },
+        { price: '$15,000', amount: '0.005 BTC' },
+        { price: '$3,000', amount: '0.001 BTC' }
+    ];
+    const optionsHtml = buyOptions.map(option => `
+        <div class="bg-white p-4 rounded shadow mt-2">
+            <p>Price: ${option.price}</p>
+            <p>Amount: ${option.amount}</p>
+            <button class="bg-blue-500 text-white p-2 rounded mt-2" onclick="confirmBuy('${coinName}', '${option.amount}', '${option.price}')">Buy Now</button>
+        </div>
+    `).join('');
+    const modalHtml = `
+        <div class="modal fixed inset-0 bg-gray-800 bg-opacity-50 flex justify-center items-center">
+            <div class="bg-white p-6 rounded shadow-lg">
+                <h3 class="text-xl font-bold mb-4">Buy ${coinName}</h3>
+                ${optionsHtml}
+                <button class="bg-red-500 text-white p-2 rounded mt-2" onclick="closeModal()">Close</button>
+            </div>
+        </div>
+    `;
+    document.body.insertAdjacentHTML('beforeend', modalHtml);
+}
+
+function confirmBuy(coinName, amount, price) {
+    alert(`Confirmed buy: ${amount} of ${coinName} for ${price}`);
+    closeModal();
+}
+
+function closeModal() {
+    const modal = document.querySelector('.modal');
+    if (modal) {
+        modal.remove();
+    }
+}
+
+function sellCoin(coinName) {
+    alert(`Selling ${coinName}`);
+    // Implement sell functionality here
+}
 
 function renderTrendsAnalysis() {
     const trendsElement = document.getElementById('trends-analysis');
@@ -107,7 +162,6 @@ function renderTrendsAnalysis() {
     `).join('');
 }
 
-
 function renderMarketSentiment() {
     const sentimentElement = document.getElementById('market-sentiment');
     sentimentElement.innerHTML = sentimentData.map(coin => `
@@ -118,7 +172,6 @@ function renderMarketSentiment() {
     `).join('');
 }
 
-
 function renderCustomAlerts() {
     const alertsElement = document.getElementById('custom-alerts');
     alertsElement.innerHTML = alertsData.map(alert => `
@@ -127,7 +180,6 @@ function renderCustomAlerts() {
         </div>
     `).join('');
 }
-
 
 function renderUserProfile() {
     const profileElement = document.getElementById('user-profile');
@@ -172,7 +224,6 @@ function handleNavigation() {
             const targetSectionId = link.id.replace('-link', '');
             document.getElementById(targetSectionId).classList.remove('hidden');
 
-         
             switch (targetSectionId) {
                 case 'home':
                     renderMarketSummary();
@@ -185,6 +236,9 @@ function handleNavigation() {
                     break;
                 case 'alerts':
                     renderCustomAlerts();
+                    break;
+                case 'wallet':
+                    renderWallet();
                     break;
                 case 'profile':
                     renderUserProfile();
