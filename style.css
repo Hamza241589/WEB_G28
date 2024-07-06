@@ -2,13 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
-
 body {
     font-family: 'Nunito', sans-serif;
 }
 
 .header {
-    background-color: #1e3a8a; 
+    background-color: #1e3a8a;
     color: white;
     padding: 1.5rem;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -16,8 +15,8 @@ body {
 }
 
 .header-title {
-    font-size: 3rem; 
-    font-weight: 800; 
+    font-size: 3rem;
+    font-weight: 800;
     margin-bottom: 1rem;
 }
 
@@ -34,7 +33,7 @@ body {
 }
 
 .header nav ul li a:hover {
-    color: #bbdefb; 
+    color: #bbdefb;
 }
 
 main {
@@ -57,7 +56,7 @@ main {
 }
 
 footer {
-    background-color: #1f2937; 
+    background-color: #1f2937;
     color: white;
     padding: 1.5rem;
     text-align: center;
